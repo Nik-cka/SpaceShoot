@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Items : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.tag == "Player")
+        {
+            Player player = collision.GetComponent<Player>();
+            player.points++;
+            Destroy(this.gameObject);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+}}
