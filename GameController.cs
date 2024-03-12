@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static float gameSpeed;
 
-    // Update is called once per frame
+    [Range(0, 5)]
+    public float gameSpeedRegulator;
+    public float speedRate = 0.5f;
+    public float gameSpeedMax = 5;
+
     void Update()
     {
-        
+        if (gameSpeedRegulator <= gameSpeedMax)
+        {
+            gameSpeedRegulator += speedRate * Time.deltaTime;
+        }
+        gameSpeed = gameSpeedRegulator;
     }
 }
